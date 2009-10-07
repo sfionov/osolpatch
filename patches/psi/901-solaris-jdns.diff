@@ -1,0 +1,28 @@
+diff --git a/iris/src/jdns/jdns_p.h b/iris/src/jdns/jdns_p.h
+index bae86f4..219e7bc 100644
+--- a/iris/src/jdns/jdns_p.h
++++ b/iris/src/jdns/jdns_p.h
+@@ -44,6 +44,10 @@
+ # define JDNS_OS_MAC
+ #endif
+ 
++#if defined(__sun__) || defined(__sunos__) || defined(__sun) || defined(__SVR4)
++# define JDNS_OS_SUNOS
++#endif
++
+ #ifdef JDNS_OS_WIN
+ # include <windows.h>
+ #endif
+diff --git a/iris/src/jdns/jdns_sys.c b/iris/src/jdns/jdns_sys.c
+index df6728c..69f4244 100644
+--- a/iris/src/jdns/jdns_sys.c
++++ b/iris/src/jdns/jdns_sys.c
+@@ -705,7 +705,7 @@ static int my_res_init()
+ //   a define, so the #ifdef doesn't work.  as a workaround, we'll explicitly
+ //   specify the platforms that have __res_state_ext
+ //#ifdef __res_state_ext
+-#if defined(JDNS_OS_MAC) || defined(JDNS_OS_FREEBSD) || defined(JDNS_OS_NETBSD)
++#if defined(JDNS_OS_MAC) || defined(JDNS_OS_FREEBSD) || defined(JDNS_OS_NETBSD) || defined(JDNS_OS_SUNOS)
+ # define USE_EXTEXT
+ #endif
+ 

@@ -1,0 +1,95 @@
+diff --git a/iris/src/irisnet/corelib/netinterface_unix.cpp b/iris/src/irisnet/corelib/netinterface_unix.cpp
+index 6565d6d..9c3127f 100644
+--- a/iris/src/irisnet/corelib/netinterface_unix.cpp
++++ b/iris/src/irisnet/corelib/netinterface_unix.cpp
+@@ -324,7 +324,7 @@ namespace XMPP {
+ class UnixNet : public NetInterfaceProvider
+ {
+ 	Q_OBJECT
+-	Q_INTERFACES(XMPP::NetInterfaceProvider);
++	Q_INTERFACES(XMPP::NetInterfaceProvider)
+ public:
+ 	QList<Info> info;
+ 	QTimer t;
+@@ -412,7 +412,7 @@ public slots:
+ class UnixNetProvider : public IrisNetProvider
+ {
+ 	Q_OBJECT
+-	Q_INTERFACES(XMPP::IrisNetProvider);
++	Q_INTERFACES(XMPP::IrisNetProvider)
+ public:
+ 	virtual NetInterfaceProvider *createNetInterfaceProvider()
+ 	{
+diff --git a/src/pluginhost.h b/src/pluginhost.h
+index bc4dbde..d9a84aa 100644
+--- a/src/pluginhost.h
++++ b/src/pluginhost.h
+@@ -32,8 +32,8 @@ class IqNamespaceFilter;
+ class PluginHost: public QObject, public StanzaSendingHost, public IqFilteringHost, public OptionAccessingHost, public ShortcutAccessingHost, public IconFactoryAccessingHost
+ , public ActiveTabAccessingHost, public ApplicationInfoAccessingHost
+ {
+-	Q_OBJECT;
+-	Q_INTERFACES(StanzaSendingHost IqFilteringHost OptionAccessingHost ShortcutAccessingHost ActiveTabAccessingHost ApplicationInfoAccessingHost);
++	Q_OBJECT
++	Q_INTERFACES(StanzaSendingHost IqFilteringHost OptionAccessingHost ShortcutAccessingHost ActiveTabAccessingHost ApplicationInfoAccessingHost)
+ 
+ public:
+ 	PluginHost(PluginManager* manager, const QString& pluginFile);
+diff --git a/src/pluginmanager.h b/src/pluginmanager.h
+index 1e0dbe1..af5e035 100644
+--- a/src/pluginmanager.h
++++ b/src/pluginmanager.h
+@@ -29,7 +29,7 @@ namespace QCA {
+ 
+ class PluginManager : public QObject
+ {
+-	Q_OBJECT;
++	Q_OBJECT
+ 
+ public:
+ 	static PluginManager* instance();
+diff --git a/src/psichatdlg.cpp b/src/psichatdlg.cpp
+index aa0afb9..c22eb37 100644
+--- a/src/psichatdlg.cpp
++++ b/src/psichatdlg.cpp
+@@ -676,21 +676,21 @@ void PsiChatDlg::updateLastMsgTime(QDateTime t)
+ 
+ void PsiChatDlg::addLogIconsResources()
+ {
+-	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl::QUrl("log_icon_receive"), logIconReceive);
+-	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl::QUrl("log_icon_send"), logIconSend);
+-	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl::QUrl("log_icon_time"), logIconTime);
+-	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl::QUrl("log_icon_info"), logIconInfo);
++	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl("log_icon_receive"), logIconReceive);
++	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl("log_icon_send"), logIconSend);
++	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl("log_icon_time"), logIconTime);
++	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl("log_icon_info"), logIconInfo);
+ }
+ 
+ void PsiChatDlg::markReceived(QString id)
+ {
+-	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl::QUrl(QString("delivery") + id), logIconDelivered);
++	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl(QString("delivery") + id), logIconDelivered);
+ 	chatView()->setLineWrapColumnOrWidth(chatView()->lineWrapColumnOrWidth());
+ }
+ 
+ void PsiChatDlg::rememberPosition(QString id)
+ {
+-	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl::QUrl(QString("delivery") + id), logIconSend);
++	chatView()->document()->addResource(QTextDocument::ImageResource, QUrl(QString("delivery") + id), logIconSend);
+ 	receiptsId = id;
+ }
+ 
+diff --git a/src/tools/optionstree/optionstreewriter.cpp b/src/tools/optionstree/optionstreewriter.cpp
+index a27614c..1434f67 100644
+--- a/src/tools/optionstree/optionstreewriter.cpp
++++ b/src/tools/optionstree/optionstreewriter.cpp
+@@ -5,7 +5,7 @@
+ #include <QKeySequence>
+ #include <QBuffer>
+ 
+-#include "optionstree.h";
++#include "optionstree.h"
+ #include "varianttree.h"
+ #include "xmpp/base64/base64.h"
+ 

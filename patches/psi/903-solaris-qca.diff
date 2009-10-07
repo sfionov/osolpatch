@@ -1,0 +1,15 @@
+diff --git a/third-party/qca/qca/src/support/qpipe.cpp b/third-party/qca/qca/src/support/qpipe.cpp
+index 34a2b11..419346f 100644
+--- a/third-party/qca/qca/src/support/qpipe.cpp
++++ b/third-party/qca/qca/src/support/qpipe.cpp
+@@ -51,9 +51,7 @@
+ # include <errno.h>
+ # include <sys/ioctl.h>
+ # include <signal.h>
+-# ifdef HAVE_SYS_FILIO_H
+-#  include <sys/filio.h>
+-# endif
++# include <sys/filio.h>
+ #endif
+ 
+ #define USE_POLL

@@ -1,0 +1,12 @@
+diff --git a/iris/src/irisnet/corelib/netinterface_unix.cpp b/iris/src/irisnet/corelib/netinterface_unix.cpp
+index 9c3127f..4fc167b 100644
+--- a/iris/src/irisnet/corelib/netinterface_unix.cpp
++++ b/iris/src/irisnet/corelib/netinterface_unix.cpp
+@@ -32,6 +32,7 @@
+ #include <net/if.h>
+ #include <net/route.h>
+ #include <netinet/in.h>
++#include <unistd.h>
+ #include <errno.h>
+ 
+ // for solaris

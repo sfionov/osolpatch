@@ -1,0 +1,23 @@
+diff --git a/src/systeminfo.cpp b/src/systeminfo.cpp
+index e21448c..c9dc402 100644
+--- a/src/systeminfo.cpp
++++ b/src/systeminfo.cpp
+@@ -90,7 +90,8 @@ static QString unixHeuristicDetect() {
+ 
+ 		LinuxPLD, // Polish Linux distros
+ 		LinuxAurox,
+-		LinuxArch
++		LinuxArch,
++		SunOS
+ 	};
+ 
+ 	enum OsFlags {
+@@ -122,6 +123,8 @@ static QString unixHeuristicDetect() {
+ 		// many distros use the /etc/redhat-release for compatibility, so RedHat will be the last :)
+ 		{ LinuxRedHat,		OsUseFile,	"/etc/redhat-release",		"RedHat Linux"		},
+ 
++		{ SunOS,		OsUseFile,	"/etc/release",		"SunOS"		},
++
+ 		{ LinuxNone,		OsUseName,	"",				""			}
+ 	};
+ 
